@@ -115,12 +115,37 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+    function findLargestPalindrome() {
+      var curLargest = 0;
+      // Check the product of every combination of 3-digit numbers to see if it's a palindrome
+      for (let i = 100; i < 1000; i++) {
+        for (let j = 100; j < 1000; j++) {
+          var prod = i * j;
+          if (isPalindrome(prod)) {
+            curLargest = prod > curLargest ? prod : curLargest;
+          }
+        }
+      }
 
+      // Compares number with its reverse
+      function isPalindrome(number) {
+        var str = number.toString();
+        var rev = str.split('').reverse().join('');
+        return str === rev;
+      }
+      return curLargest;
+    }
+
+    expect(findLargestPalindrome()).toBe(906609);
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
+    function findSmallestNumberDivisibleByOneToTwenty() {
+      var result = 0;
 
-
+      return result;
+    }
+    expect(findSmallestNumberDivisibleByOneToTwenty()).toBe(232792560);
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
