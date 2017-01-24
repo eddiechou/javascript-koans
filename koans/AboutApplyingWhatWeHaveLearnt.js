@@ -92,8 +92,25 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
   it("should find the largest prime factor of a composite number", function () {
+    function findLargestPrimeFactor(composite) {
+      var curFactor = 2;
+      var curLargest = 1;
+
+      while (composite > 1) {
+        while (composite % curFactor === 0) {
+          curLargest = curFactor;
+          composite /= curFactor;
+        }
+        curFactor++;
+      }
+
+      return curLargest;
+    }
+
+    expect(findLargestPrimeFactor(720720)).toBe(13);
+    expect(findLargestPrimeFactor(2520)).toBe(7);
 
   });
 
@@ -113,5 +130,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+
 });
