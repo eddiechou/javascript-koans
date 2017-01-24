@@ -153,7 +153,7 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
 
-    function e(number) {
+    function diffSumSquares(number) {
       // 1^2 + 2^2 + .... + (n-1)^2 + n^2
       function sumSquares(number) {
         var sumSquares = 0;
@@ -178,30 +178,32 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the 10001st prime", function () {
-    function find1001stPrime() {
-      var check = 1;
-      var counter = 0;
-      while (counter <= 1001) {
+    function find10001stPrime() {
+      // Prime def: natural number > 1 that has no positive divisors other than 1 and itself
+      var check = 3;
+      var numPrime = 1;
+      while (numPrime < 10001) {
         if (isPrime(check)) {
-          counter++;
-          check++;
+          numPrime++;
         }
+        check++;
       }
 
+      // Doesn't work for 2
       function isPrime(number) {
-        for (let i = 2; i < number; i++) {
+        var upperLim = Math.ceil(Math.sqrt(number));
+        for (let i = 2; i < upperLim+1; i++) {
             if (number % i === 0) {
                 return false;
             }
         }
-        return number > 1;
-
+        return true;
       }
-      return check--;
 
+      return --check;
     }
 
-    expect(find1001stPrime()).toBe(104743);
+    expect(find10001stPrime()).toBe(104743);
   });
 
 });
