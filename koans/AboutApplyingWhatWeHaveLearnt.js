@@ -140,20 +140,44 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-    function findSmallestNumberDivisibleByOneToTwenty() {
+    function findSmallestNumDivByOneToTwenty() {
       var result = 0;
 
       return result;
     }
-    expect(findSmallestNumberDivisibleByOneToTwenty()).toBe(232792560);
+    expect(findSmallestNumDivByOneToTwenty()).toBe(232792560);
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
 
+    function diff(number) {
+      // 1^2 + 2^2 + .... + (n-1)^2 + n^2
+      function sumSquares(number) {
+        return 1;
+      }
+
+      // (1 + 2 + ... + (n-1) + n)^2
+      function squareOfSums(number) {
+        return 1;
+      }
+      return sumSquares(number) - squareOfSums(number);
+    }
+
+
+    expect(diff(1)).toBe(0);
+    expect(diff(10)).toBe(-2640);
+    expect(diff(25)).toBe(-100100);
   });
 
   it("should find the 10001st prime", function () {
+    function find1001stPrime() {
+      var result = 0;
 
+      return result;
+
+    }
+
+    expect(find1001stPrime()).toBe(104743);
   });
 
 });
