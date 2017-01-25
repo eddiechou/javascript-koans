@@ -142,13 +142,44 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
     // 1. Prime factorize each number from 1 to 20
     // 2. Multiply together the highest exponent for each prime factor within the pool
-    // i.e. (highest power for 2) * (highest power for 3) * ... * (highest power for 20)
+    // i.e. result = 2^(highest power for 2) * 3^(highest power for 3) * ... * 20^(highest power for 20)
     function findSmallestNumDivByOneToTwenty() {
-      var result = 0;
+      var result = 1;
+      // Initialize highest counts
+      var highest = {}; // highest exponent
+      for (let i = 2; i <= 20; i++) {
+        highest[i] = 0;
+      }
 
+      // Obtain highest exponents
+      for (let num = 2; num <= 20; num++) {
+        updatePFactorsFor(num);
+      }
+
+      // Multiply highest exponents together
+      for (var num in highest) {
+        if (highest.hasOwnProperty(num)) {
+          result *= Math.pow(parseInt(num), highest[num]);
+        }
+      }
+
+      function updatePFactorsFor(number) {
+        var count = 0;
+        for (let i = 2; i <= number; i++) {
+          while (number % i === 0) {
+            count++;
+            number /= i;
+          }
+          // If the count is > highest, replace value with count.
+          if (count > highest[i]) {
+            highest[i] = count;
+          }
+          count = 0;
+        }
+      }
       return result;
     }
-    //expect(findSmallestNumDivByOneToTwenty()).toBe(232792560);
+    expect(findSmallestNumDivByOneToTwenty()).toBe(232792560);
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
